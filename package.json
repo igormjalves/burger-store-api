@@ -16,7 +16,7 @@
     "build": "npm-run-all clean transpile",
     "server": "node ./dist/server.js",
     "prod": "NODE_ENV=production npm-run-all build server",
-    "start": "npm run prod"
+    "start": "node ./src/server.js"
   },
   "keywords": [],
   "author": "",
