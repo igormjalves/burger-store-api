@@ -5,6 +5,9 @@ import User from '../app/models/User'
 import configDatabase from '../config/database'
 import Product from '../app/models/Product'
 import Category from '../app/models/Category'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const models = [User, Product, Category]
 
@@ -27,7 +30,7 @@ class Database {
     }
 
     mongo() {
-        this.mongoConnection = mongoose.connect('mongodb+srv://root:root@cluster0.nrtvbih.mongodb.net/?retryWrites=true&w=majority', {
+        this.mongoConnection = mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(() => "MongoDB Atlas Connected").catch((error) => console.log(error))

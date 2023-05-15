@@ -1,9 +1,12 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 module.exports = {
     dialect: 'postgres',
-    host: 'ep-mute-smoke-215286.us-east-2.aws.neon.tech',
-    username: 'igormjalves',
-    password: 'in9QTNRWDf3I',
-    database: 'neondb',
+    host: process.env.POSTGRES_HOST,
+    username: process.env.POSTGRES_USERNAME,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE,
     dialectOptions: {
         ssl: {
             rejectUnauthorized: false,
@@ -15,5 +18,3 @@ module.exports = {
         underscoredAll: true
     }
 }
-
-// postgres://igormjalves:in9QTNRWDf3I@ep-mute-smoke-215286.us-east-2.aws.neon.tech/neondb?options=project%3Dburger-store-database
