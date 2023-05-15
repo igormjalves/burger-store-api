@@ -2,6 +2,9 @@
   "name": "burger-store",
   "version": "1.0.0",
   "main": "src/server.js",
+  "engines": {
+    "node": "16"
+  },
   "babel": {
     "presets": [
       "@babel/preset-env"
@@ -14,8 +17,6 @@
     "transpile": "babel ./src --out-dir ./dist",
     "clean": "rimraf dist",
     "build": "npm-run-all clean transpile",
-    "server": "node ./dist/server.js",
-    "prod": "NODE_ENV=production npm-run-all build server",
     "start": "node ./dist/server.js"
   },
   "keywords": [],
