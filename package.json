@@ -13,9 +13,8 @@
     "debug": "nodemon --inspect",
     "transpile": "babel ./src --out-dir ./dist",
     "clean": "rimraf dist",
-    "build": "npm-run-all clean transpile",
-    "prod": "NODE_ENV=production npm-run-all build server",
-    "start": "node ./src/server.js"
+    "build": "clean transpile",
+    "start": "node ./dist/server.js"
   },
   "keywords": [],
   "author": "",
