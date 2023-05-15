@@ -15,7 +15,8 @@
     "clean": "rimraf dist",
     "build": "npm-run-all clean transpile",
     "server": "node ./dist/server.js",
-    "start": "npm run npm-run-all build server"
+    "prod": "NODE_ENV=production npm-run-all build server",
+    "start": "npm run prod"
   },
   "keywords": [],
   "author": "",
