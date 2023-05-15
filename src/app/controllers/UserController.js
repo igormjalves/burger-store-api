@@ -13,10 +13,6 @@ class UserController {
             admin: Yup.boolean()
         })
 
-        // if(!(await schema.isValid(req.body))) {
-        //     return res.status(400).json({ error: 'Please review the entered data'})
-        // }
-
         try {
             schema.validateSync(req.body, {abortEarly: false})
         } catch(err) {

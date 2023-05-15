@@ -69,7 +69,7 @@ class OrderController {
     }
 
     async index(req,res) {
-        const orders = await Order.find()
+        const orders = Order.find()
 
         return res.json(orders)
     }
@@ -93,7 +93,7 @@ class OrderController {
         const {status} = req.body
 
         try {
-            await Order.updateOne({_id: id }, {status})
+            Order.updateOne({_id: id }, {status})
         } catch (error) {
             return res.status(400).json({ error: error.message })
         }

@@ -18,7 +18,6 @@ class Database {
     }
 
     init() {
-        // this.connection = new Sequelize(configDatabase)
         this.connection = new Sequelize(configDatabase)
         try {
             this.connection.authenticate();
