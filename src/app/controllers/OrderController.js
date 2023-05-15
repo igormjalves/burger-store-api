@@ -69,7 +69,7 @@ class OrderController {
     }
 
     async index(req,res) {
-        const orders = Order.find()
+        const orders = await Order.find()
 
         return res.json(orders)
     }
