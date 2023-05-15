@@ -14,7 +14,7 @@
     "transpile": "babel ./src --out-dir ./dist",
     "clean": "rimraf dist",
     "build": "npm-run-all clean transpile",
-    "start": "node ./dist/server.js"
+    "start": "build node ./dist/server.js"
   },
   "keywords": [],
   "author": "",
