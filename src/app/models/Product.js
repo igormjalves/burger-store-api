@@ -1,7 +1,7 @@
 import Sequelize, { Model } from "sequelize";
 
-const url = process.env.URL || 'http://localhost:3001'
-const port = process.env.PORT || 3001
+// const url = process.env.URL || 'http://localhost:3001'
+// const port = process.env.PORT || 3001
 
 class Product extends Model {
     static init(sequelize) {
@@ -13,7 +13,7 @@ class Product extends Model {
             url: {
                 type: Sequelize.VIRTUAL,
                 get(){
-                    return `${url}:${port}/product-file/${this.path}`
+                    return `/product-file/${this.path}`
                 }
             }
         }, {

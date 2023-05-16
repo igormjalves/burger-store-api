@@ -3,6 +3,8 @@ import Product from '../models/Product'
 import Category from '../models/Category'
 import User from '../models/User'
 
+import {uploadFile} from '../../s3'
+
 class ProductController {
     async store(req, res) {
         const schema = Yup.object().shape({
@@ -22,7 +24,11 @@ class ProductController {
 
         if(!isAdmin) { return res.status(401).json({error: 'You do not have sufficient privileges to perform this action.'}) }
 
-        const {filename: path} = req.file
+        const file = req.file
+        const result = await uploadFile(file)
+        console.log(result)
+        const path = result.Key
+
         const {name, price, category_id, offer} = req.body
 
         const product = await Product.create({
