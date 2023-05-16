@@ -22,7 +22,7 @@ export function uploadFile(file) {
     const uploadParams = {
         Bucket: bucketName,
         Body: file.buffer,
-        Key: v4() + extname(file.originalname)
+        Key: `uploads/${v4()}${extname(file.originalname)}`
     }
 
     return s3.upload(uploadParams).promise()

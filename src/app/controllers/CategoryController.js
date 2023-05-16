@@ -2,6 +2,8 @@ import * as Yup from 'yup'
 import Category from '../models/Category'
 import User from '../models/User'
 
+import {uploadFile} from '../../s3'
+
 class CategoryController {
     async store(req, res) {
         const schema = Yup.object().shape({
@@ -18,7 +20,6 @@ class CategoryController {
 
         if(!isAdmin) { return res.status(401).json({error: 'You do not have sufficient privileges to perform this action.'}) }
 
-        const { filename: path } = req.file
         const {name} = req.body
 
         const categoryExists = await Category.findOne({
@@ -28,6 +29,10 @@ class CategoryController {
         if(categoryExists) {
             return res.status(400).json({ error: 'Category already exists.'})
         }
+
+        const file = req.file
+        const result = await uploadFile(file)
+        const path = result.Key
 
         const { id } = await Category.create({ name, path })
 

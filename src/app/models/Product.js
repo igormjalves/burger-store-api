@@ -1,6 +1,10 @@
 import Sequelize, { Model } from "sequelize";
+import * as dotenv from 'dotenv'
 
-// const url = process.env.URL || 'http://localhost:3001'
+dotenv.config()
+
+
+const url = process.env.STORAGE_URL || 'http://localhost'
 // const port = process.env.PORT || 3001
 
 class Product extends Model {
@@ -13,7 +17,7 @@ class Product extends Model {
             url: {
                 type: Sequelize.VIRTUAL,
                 get(){
-                    return `/product-file/${this.path}`
+                    return `${url}/${this.path}`
                 }
             }
         }, {

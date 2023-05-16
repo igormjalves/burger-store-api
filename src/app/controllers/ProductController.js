@@ -26,7 +26,6 @@ class ProductController {
 
         const file = req.file
         const result = await uploadFile(file)
-        console.log(result)
         const path = result.Key
 
         const {name, price, category_id, offer} = req.body
