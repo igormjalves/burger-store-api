@@ -24,10 +24,10 @@ routes.use(authToken)
 routes.post("/products", upload.single('file'), ProductController.store)
 routes.get('/products', ProductController.index)
 routes.put('/products/:id', upload.single('file'), ProductController.update)
-routes.get('/product-file/:key', (req,res) => {
+routes.get('/product-file/:key', async (req,res) => {
     console.log(req.params)
     const key = req.params.key
-    const readFile = getFile(key)
+    const readFile = await getFile(key)
     console.log(readFile)
     readFile.pipe(res)
 })
