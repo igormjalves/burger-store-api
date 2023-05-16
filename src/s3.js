@@ -34,5 +34,5 @@ export function getFile(fileKey) {
         Bucket: bucketName
     }
 
-    return s3.getObject(downloadParams).createReadStream().promise()
+    return s3.getObject(downloadParams).createReadStream()
 }
